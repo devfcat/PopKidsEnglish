@@ -1,0 +1,85 @@
+{
+    "wordFile" :
+    [
+        {
+            "english": "family",
+            "korean" : "가족"
+        },
+        {
+            "english": "me",
+            "korean" : "나 자신"
+        },
+        {
+            "english": "daughter",
+            "korean" : "딸, 자녀 중 여자"
+        },
+        {
+            "english": "son",
+            "korean" : "아들, 자녀 중 남자"
+        },
+        {
+            "english": "mom",
+            "korean" : "엄마"
+        },
+        {
+            "english": "dad",
+            "korean" : "아빠"
+        },
+        {
+            "english": "grandmother",
+            "korean" : "할머니"
+        },
+        {
+            "english": "grandfather",
+            "korean" : "할아버지"
+        },
+        {
+            "english": "sister",
+            "korean" : "여자 형제"
+        },
+        {
+            "english": "brother",
+            "korean" : "남자 형제"
+        },
+        {
+            "english": "aunt",
+            "korean" : "이모, 고모"
+        },
+        {
+            "english": "uncle",
+            "korean" : "삼촌"
+        },
+        {
+            "english": "cousin",
+            "korean" : "사촌"
+        },
+        {
+            "english": "parents",
+            "korean": "부모님"
+        },
+        {
+            "english": "twins",
+            "korean": "쌍둥이"
+        },
+        {
+            "english": "nephew",
+            "korean": "남자 조카"
+        },
+        {
+            "english": "niece",
+            "korean": "여자 조카"
+        },
+        {
+            "english": "husband",
+            "korean": "남편"
+        },
+        {
+            "english": "wife",
+            "korean": "아내"
+        },
+        {
+            "english": "baby",
+            "korean": "아기"
+        }
+    ]
+}

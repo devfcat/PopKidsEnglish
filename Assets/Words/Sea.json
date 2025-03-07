@@ -1,0 +1,84 @@
+{
+    "wordFile": [
+        {
+            "english": "sea",
+            "korean": "바다"
+        },
+        {
+            "english": "ocean",
+            "korean": "대양"
+        },
+        {
+            "english": "wave",
+            "korean": "파도"
+        },
+        {
+            "english": "beach",
+            "korean": "해변"
+        },
+        {
+            "english": "sand",
+            "korean": "모래"
+        },
+        {
+            "english": "shell",
+            "korean": "조개껍데기"
+        },
+        {
+            "english": "fish",
+            "korean": "물고기"
+        },
+        {
+            "english": "shark",
+            "korean": "상어"
+        },
+        {
+            "english": "whale",
+            "korean": "고래"
+        },
+        {
+            "english": "dolphin",
+            "korean": "돌고래"
+        },
+        {
+            "english": "octopus",
+            "korean": "문어"
+        },
+        {
+            "english": "crab",
+            "korean": "게"
+        },
+        {
+            "english": "jellyfish",
+            "korean": "해파리"
+        },
+        {
+            "english": "starfish",
+            "korean": "불가사리"
+        },
+        {
+            "english": "seahorse",
+            "korean": "해마"
+        },
+        {
+            "english": "seaweed",
+            "korean": "해조류"
+        },
+        {
+            "english": "lighthouse",
+            "korean": "등대"
+        },
+        {
+            "english": "boat",
+            "korean": "배, 보트"
+        },
+        {
+            "english": "submarine",
+            "korean": "잠수함"
+        },
+        {
+            "english": "treasure",
+            "korean": "보물"
+        }
+    ]
+}
