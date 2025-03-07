@@ -23,7 +23,7 @@ using UnityEngine.UI;
 
     Main_Menu,
     Main_WordBook, // 단어 목록
-    Main_QuizBook, // 퀴즈 목록
+    Main_QuizMenu,
 
     /// <summary>
     /// 단어 보기, 그리기
@@ -120,11 +120,19 @@ public class GameManager : MonoBehaviour
     // 상태 관리 머신
     public void SetState(eState state)
     {
+        StartCoroutine(Change_State(state));
+    }
+
+    // 자연스러운 화면 전환을 위해 딜레이를 줌
+    IEnumerator Change_State(eState state)
+    {
         prev_state = m_state;
 
         m_state = state;
 
         string m_scene = SceneManager.GetActiveScene().name;
+
+        yield return new WaitForSeconds(0.2f);
 
         switch(state)
         {
@@ -133,11 +141,30 @@ public class GameManager : MonoBehaviour
             case eState.Main_Menu:
                 LoadStateScene(m_scene, state);
                 break;
+            case eState.Main_WordBook:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Main_QuizMenu:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.MyDrawing_Menu:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Word_Main:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Word_JustAnswer:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Word_Draw:
+                LoadStateScene(m_scene, state);
+                break;
             default:
                 LoadStateScene(m_scene, eState.Main_Menu);
                 break;
         }
     }
+
 
     // 이전 화면과 씬이 다르면 씬을 로드하는 메서드
     public void LoadStateScene(string m_sceneName, eState next)
@@ -168,7 +195,7 @@ public class GameManager : MonoBehaviour
         {
             n_sceneName = "Quiz";
         }
-        else if (next == eState.Main_Introduce || next == eState.Main_Terms || next == eState.Main_Menu || next == eState.Main_WordBook || next == eState.Main_QuizBook)
+        else if (next == eState.Main_Introduce || next == eState.Main_Terms || next == eState.Main_Menu || next == eState.Main_WordBook || next == eState.Main_QuizMenu)
         {
             n_sceneName = "Main";
         }
@@ -189,7 +216,7 @@ public class GameManager : MonoBehaviour
             }
             else if (n_sceneName == "Draw")
             {
-
+                DrawManager.Instance.On_Panel();
             }
             else if (n_sceneName == "Quiz")
             {
