@@ -32,7 +32,7 @@ public class Word_Main : MonoBehaviour
     // 이미 학습한 적이 있는가
     public void Get_isLearned()
     {
-        string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.m_english + ".png";
+        string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.id + ".png";
 
         FileInfo fileInfo = new FileInfo(filepath); 
 
