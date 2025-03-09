@@ -18,6 +18,11 @@ public class DrawManager : MonoBehaviour
     [Header("로딩 처리")]
     public GameObject panel_Loading;
 
+    [Header("그림 결과용 뒤로가기 버튼")]
+    public GameObject btn_back;
+    public GameObject btn_back_result;
+    public GameObject btn_back_main;
+
     // DrawManager 인스턴스화 싱글톤 패턴
     private static DrawManager _instance;
     public static DrawManager Instance
@@ -45,7 +50,6 @@ public class DrawManager : MonoBehaviour
     void OnEnable()
     {
         SoundManager.Instance.PlayBGM(BGM.DrawAndWord);
-        Screen.orientation = ScreenOrientation.LandscapeRight;
 
         // AI 초기 설정
         AI_Manager.Instance.Init_AI();
@@ -58,6 +62,8 @@ public class DrawManager : MonoBehaviour
     {
         eState state = GameManager.Instance.m_state;
         Debug.Log("현재 state: " + state);
+
+        SetBackBTN();
         
         switch(state)
         {
@@ -75,8 +81,39 @@ public class DrawManager : MonoBehaviour
                 SetHeader(2);
                 Set_AIText();
                 break;
+            case eState.Word_DrawResult:
+                SetPanels(3);
+                SetHeader(1);
+                break;
+            case eState.Draw:
+                SetPanels(4);
+                SetHeader(0);
+                break;
+            case eState.Draw_Result:
+                SetPanels(5);
+                SetHeader(0);
+                break;
             default:
                 Debug.Log("DrawManager On_Panel 예외발생");
+                break;
+        }
+    }
+
+    public void SetBackBTN()
+    {
+        eState state = GameManager.Instance.m_state;
+
+        switch(state)
+        {
+            case eState.Word_DrawResult:
+                btn_back_main.SetActive(false);
+                btn_back_result.SetActive(true); // 이 화면에서만 뒤로가기 버튼 생김 다름
+                btn_back.SetActive(false);
+                break;
+            default:
+                btn_back_main.SetActive(false);
+                btn_back_result.SetActive(false);
+                btn_back.SetActive(true);
                 break;
         }
     }
@@ -137,6 +174,15 @@ public class DrawManager : MonoBehaviour
                 break;
             case eState.Word_Draw:
                 GameManager.Instance.SetState(eState.Word_Main);
+                break;
+            case eState.Word_DrawResult:
+                GameManager.Instance.SetState(eState.Main_WordBook);
+                break;
+            case eState.Draw:
+                GameManager.Instance.SetState(eState.Main_Menu);
+                break;
+            case eState.Draw_Result:
+                GameManager.Instance.SetState(eState.Draw);
                 break;
             default:
                 GameManager.Instance.SetState(eState.Main_WordBook);
