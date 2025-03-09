@@ -32,7 +32,7 @@ public class WordSelect : MonoBehaviour
     public void OnEnable()
     {
         // 단어장을 불러옴
-        StartCoroutine(WordManager.Instance.Coroutine_OpenWordMenu(WordManager.Instance.m_section));
+        StartCoroutine(WordManager.Instance.DownloadFile(WordManager.Instance.m_section));
         // 단어장 주제를 알려줌
         title.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = WordManager.Instance.m_section;
     }
