@@ -53,7 +53,7 @@ public class SetResolution : MonoBehaviour
         }
         else
         {
-            Screen.orientation = ScreenOrientation.LandscapeRight;
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
             if (screenWidth/screenHeight >= 0.5625f) // 9:16보다 정사각형에 가까움
             {
                 // 높이를 기준으로 함
