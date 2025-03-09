@@ -60,7 +60,7 @@ public class Word_DrawResult : MonoBehaviour
     // 이전 화면에서 내가 그린 그림을 가져와 적용함
     IEnumerator GetMyPicture()
     {
-        string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.m_english + ".png";
+        string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.id + ".png";
         
         byte[] byteTexture = System.IO.File.ReadAllBytes(filepath);
         if (byteTexture.Length > 0)
@@ -103,5 +103,8 @@ public class Word_DrawResult : MonoBehaviour
         string folderName = "POP_Kids_English";
 
         NativeGallery.SaveImageToGallery(m_texture, photoName, folderName);
+
+        // 그림 저장 완료 팝업 띄움
+        DrawManager.Instance.popup_saveDone.SetActive(true);
     }
 }

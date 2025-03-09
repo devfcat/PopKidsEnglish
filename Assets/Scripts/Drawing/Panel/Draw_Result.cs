@@ -70,5 +70,8 @@ public class Draw_Result : MonoBehaviour
         string folderName = "POP_Kids_English";
 
         NativeGallery.SaveImageToGallery(tex, photoName, folderName);
+
+        // 그림 저장 완료 팝업 띄움
+        DrawManager.Instance.popup_saveDone.SetActive(true);
     }
 }
