@@ -69,7 +69,7 @@ public class Word_Draw : MonoBehaviour
         byte[] bytes = tex.EncodeToPNG();
         Destroy(tex);
 
-        string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.m_english + ".png";
+        string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.id + ".png";
         File.WriteAllBytes(filepath, bytes);
 
         GoToResult();
