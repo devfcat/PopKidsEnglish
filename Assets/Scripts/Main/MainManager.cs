@@ -12,6 +12,9 @@ public class MainManager : MonoBehaviour
     [Tooltip("헤더")] public List<GameObject> headers;
     public GameObject icon;
     public GameObject btn_back;
+    public GameObject panel_Loading;
+    [SerializeField] private int isAudioActive; // 소리 켜짐(0) 꺼짐(1)
+    public List<GameObject> btn_audios; // 오디오버튼
 
     // MainManager 인스턴스화 싱글톤 패턴
     private static MainManager _instance;
@@ -29,12 +32,18 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        bool isLoading = WordManager.Instance.isLoading;
+        panel_Loading.SetActive(isLoading);
+    }
+
     // 기본 세팅이 들어가 있음
     void OnEnable()
     {
         SoundManager.Instance.PlayBGM(BGM.Main);
         Screen.orientation = ScreenOrientation.Portrait;
-
+        Get_Audio();
         On_Panel();
     }
 
@@ -123,5 +132,43 @@ public class MainManager : MonoBehaviour
     public void GoHome()
     {
         GameManager.Instance.SetState(eState.Main_Menu);
+    }
+
+    // 소리 버튼 초기 설정 (시작 시 한번만 실행됨)
+    public void Get_Audio()
+    {
+        isAudioActive = PlayerPrefs.GetInt("isAudioActive");
+        if (isAudioActive == 0) // 켜짐
+        {
+            SoundManager.Instance.Set_Volume(true);
+            btn_audios[0].SetActive(true);
+            btn_audios[1].SetActive(false);
+        } 
+        else // 꺼짐
+        {
+            SoundManager.Instance.Set_Volume(false);
+            btn_audios[0].SetActive(false);
+            btn_audios[1].SetActive(true);
+        }
+    }
+
+    // 실제 적용되는 메서드
+    public void Set_Audio()
+    {
+        if (isAudioActive == 0) // 켜짐
+        {
+            isAudioActive = 1; // 꺼지게 만듦
+            SoundManager.Instance.Set_Volume(false);
+            btn_audios[0].SetActive(false);
+            btn_audios[1].SetActive(true);
+        } 
+        else // 꺼짐
+        {
+            isAudioActive = 0; // 켜지게 만듦
+            SoundManager.Instance.Set_Volume(true);
+            btn_audios[0].SetActive(true);
+            btn_audios[1].SetActive(false);
+        }
+        PlayerPrefs.SetInt("isAudioActive", isAudioActive);
     }
 }

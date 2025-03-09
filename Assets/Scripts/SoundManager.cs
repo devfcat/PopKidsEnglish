@@ -37,7 +37,8 @@ public enum SFX
     correct = 3,
     uncorrect = 4,
 
-    pretty = 5 // 샤랄라 하는 효과음
+    pretty = 5, // 샤랄라 하는 효과음
+    Done = 6, // 그림 완성
 }
 
 public class SoundManager : MonoBehaviour
@@ -49,7 +50,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgmPlayer; // Bgm AudioSource, SoundManager 첫 번째 자식이어야 함 
     private AudioSource sfxPlayer; // Sfx AudioSource, SoundManager 두 번째 자식이어야 함 
 
-    [Header("Volume")] // 볼륨 상태 디버깅용
+    [Header("Volume")]
     [ReadOnly, SerializeField, Range(0, 1), Tooltip("Bgm 볼륨")] private float Volume1 = 1f;
     [ReadOnly, SerializeField, Range(0, 1), Tooltip("Sfx 볼륨")] private float Volume2 = 1f;
 
@@ -112,6 +113,22 @@ public class SoundManager : MonoBehaviour
             sfxVolume = Mathf.Clamp01(value);
             sfxPlayer.volume = sfxVolume;
             Volume2 = sfxVolume;
+        }
+    }
+
+    public void Set_Volume(bool isOn)
+    {
+        if (isOn)
+        {
+            bgmPlayer.volume = 1f;
+            BgmControl(BgmStatus.Play);
+            //sfxPlayer.volume = 1f;
+        }
+        else
+        {
+            bgmPlayer.volume = 0f;
+            BgmControl(BgmStatus.Stop);
+            //sfxPlayer.volume = 0f;
         }
     }
 
