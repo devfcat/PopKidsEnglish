@@ -8,7 +8,7 @@ using System.Collections;
 using System.IO;
 using System;
 
-public class Word_Draw : MonoBehaviour
+public class Draw : MonoBehaviour
 {
     [Header("DrawTexture")]
     public DrawTextureUI drawing;
@@ -26,12 +26,8 @@ public class Word_Draw : MonoBehaviour
     [Header("그림")]
     public Texture2D m_picture;
 
-    public TextMeshProUGUI word;
-
     public void OnEnable()
     {
-        word.text = WordManager.Instance.m_english;
-
         drawing.Clear();
 
         // 초기 설정
@@ -57,6 +53,7 @@ public class Word_Draw : MonoBehaviour
 
         m_picture = new Texture2D(2, 2);   
         m_picture = drawing.GetTexture2D();
+
         StartCoroutine(SavePNG(m_picture));
     }
 
@@ -69,17 +66,16 @@ public class Word_Draw : MonoBehaviour
         byte[] bytes = tex.EncodeToPNG();
         Destroy(tex);
 
-        string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.m_english + ".png";
+        string filepath = Application.persistentDataPath + "/myPainting" + ".png";
         File.WriteAllBytes(filepath, bytes);
 
         GoToResult();
     }
 
-        public void GoToResult()
+    public void GoToResult()
     {
-        GameManager.Instance.SetState(eState.Word_DrawResult);
+        GameManager.Instance.SetState(eState.Draw_Result);
     }
-
 
     // 1이 연필
     public void SelectBrush(int num)
@@ -121,6 +117,4 @@ public class Word_Draw : MonoBehaviour
 
         svg.transform.GetComponent<RectTransform>().localScale = new Vector3(0.5f, 0.5f, 0.5f); // 선택된 색 UI는 크기가 줄어듦
     }
-
 }
-
