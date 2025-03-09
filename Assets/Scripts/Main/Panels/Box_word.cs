@@ -8,6 +8,8 @@ public class Box_word : MonoBehaviour
 
     public void OnClick()
     {
+        WordManager.Instance.id = id;
+        
         WordManager.Instance.m_english = WordManager.Instance.wordList[id].english;
         WordManager.Instance.m_korean = WordManager.Instance.wordList[id].korean;
 
