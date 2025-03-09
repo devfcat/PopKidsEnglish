@@ -120,7 +120,7 @@ public class SoundManager : MonoBehaviour
     {
         if (isOn)
         {
-            bgmPlayer.volume = 1f;
+            bgmPlayer.volume = 0.5f;
             BgmControl(BgmStatus.Play);
             //sfxPlayer.volume = 1f;
         }
