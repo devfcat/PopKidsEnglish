@@ -79,7 +79,12 @@ public class WordManager : MonoBehaviour
         isLoading = true;
 
         // 로컬 저장할 공간
-        string filePath = Path.Combine(Application.persistentDataPath, section + ".json");
+        string filePath = Path.Combine(Application.persistentDataPath, "Word/"+ section + ".json");
+
+        if(!Directory.Exists(Application.persistentDataPath + "/Word"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Word");
+        }
 
         if (File.Exists(filePath)) // 이미 다운받은 적이 있다면 return
         {
