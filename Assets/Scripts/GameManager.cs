@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// 앱 전체 상태관리를 위한 총괄 매니저 스크립트
@@ -14,8 +15,7 @@ using UnityEngine.UI;
  {
     Splash = 0, // 스플래시 화면
     Main_Introduce, // 사용법 설명 화면
-    
-    Main_Terms, // 이용약관
+    Main_Terms, // 이용약관 처음볼 때
 
     /// <summary>
     /// 메인에 소속된 화면
@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour
 
     [Header("팝업")]
     public GameObject popUp_Exit;
+    public GameObject popUp_Error;
+
+    public float screen_width;
+    public float screen_height;
 
     void Start()
     {
@@ -99,6 +103,9 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
+        screen_width = Screen.width;
+        screen_height = Screen.height;
+
         prev_state = eState.None;
         Application.targetFrameRate = 60; // 60 프레임 고정
         SetState(eState.Splash);
@@ -157,6 +164,15 @@ public class GameManager : MonoBehaviour
                 LoadStateScene(m_scene, state);
                 break;
             case eState.Word_Draw:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Word_DrawResult:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Draw:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Draw_Result:
                 LoadStateScene(m_scene, state);
                 break;
             default:
@@ -233,6 +249,36 @@ public class GameManager : MonoBehaviour
         {
             SetPopupExit();
         }
+
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            ErrorCode = -1;
+        }
+
+        if (ErrorCode == -1)
+        {
+            Open_ErrorPopup("인터넷 연결을 확인해주세요.");
+        }
+        else if (ErrorCode == 100)
+        {
+            Open_ErrorPopup("정보를 불러올 수 없습니다.\n문제가 계속되면 devfcat@gmail.com으로 문의바랍니다.");
+        }
+        else if (ErrorCode == 200)
+        {
+            Open_ErrorPopup("현재 서비스를 이용하실 수 없습니다.\n문제가 계속되면 devfcat@gmail.com으로 문의바랍니다.");
+        }
+        else if (ErrorCode == 201)
+        {
+            Open_ErrorPopup("파일을 불러올 수 없습니다.\n문제가 계속되면 devfcat@gmail.com으로 문의바랍니다.");
+        }
+    }
+
+    void Open_ErrorPopup(string msg)
+    {
+        popUp_Error.SetActive(true);
+        popUp_Error.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = msg;
+        ErrorCode = 0;
+        SetState(eState.Main_Menu);
     }
 
     // 나가기 팝업 제어
