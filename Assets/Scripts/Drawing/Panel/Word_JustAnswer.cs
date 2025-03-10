@@ -11,6 +11,7 @@ public class Word_JustAnswer : MonoBehaviour
     void OnEnable()
     {
         word.text = WordManager.Instance.m_english + " / " + WordManager.Instance.m_korean;
+        Set_NextButton();
     }
 
     // 단어장에서 이 단어가 마지막이 아니어야 다음으로 버튼이 나옴
