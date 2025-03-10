@@ -87,15 +87,15 @@ public class Draw : MonoBehaviour
         {
             drawing.IdTexture = 1;
             drawing.Type = DrawTextureUI.BrushType.none;
-            brushes[1].sprite = brushes_img[3];
-            brushes[0].sprite = brushes_img[0];
+            brushes[1].sprite = brushes_img[2];
+            brushes[0].sprite = brushes_img[1];
         }
         else // 지우개
         {
             drawing.IdTexture = 4;
             drawing.Type = DrawTextureUI.BrushType.eraser;
-            brushes[0].sprite = brushes_img[1];
-            brushes[1].sprite = brushes_img[2];
+            brushes[0].sprite = brushes_img[0];
+            brushes[1].sprite = brushes_img[3];
         }
     }
 
