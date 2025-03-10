@@ -99,6 +99,10 @@ public class DrawManager : MonoBehaviour
                 SetPanels(5);
                 SetHeader(0);
                 break;
+            case eState.Draw_Intro:
+                SetPanels(6);
+                SetHeader(0);
+                break;
             default:
                 Debug.Log("DrawManager On_Panel 예외발생");
                 break;
@@ -185,10 +189,13 @@ public class DrawManager : MonoBehaviour
                 GameManager.Instance.SetState(eState.Main_WordBook);
                 break;
             case eState.Draw:
-                GameManager.Instance.SetState(eState.Main_Menu);
+                GameManager.Instance.SetState(eState.Draw_Intro);
                 break;
             case eState.Draw_Result:
                 GameManager.Instance.SetState(eState.Draw);
+                break;
+            case eState.Draw_Intro:
+                GameManager.Instance.SetState(eState.Main_Menu);
                 break;
             default:
                 GameManager.Instance.SetState(eState.Main_WordBook);
