@@ -54,7 +54,7 @@ public class Navigation : MonoBehaviour
                 GameManager.Instance.SetState(eState.Main_Menu);
                 break;
             case 1:
-                GameManager.Instance.SetState(eState.Draw);
+                GameManager.Instance.SetState(eState.Draw_Intro);
                 break;
             case 2:
                 GameManager.Instance.SetState(eState.MyDrawing_Menu);
