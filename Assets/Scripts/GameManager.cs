@@ -44,7 +44,7 @@ using TMPro;
     /// <summary>
     /// 그림판 모드 및 내 그림 조회
     /// </summary>
-    
+    Draw_Intro, // Draw 시작 전
     Draw, // Draw 씬
     Draw_Result, // Draw 씬
     MyDrawing_Menu, // 메인 씬
@@ -105,6 +105,9 @@ public class GameManager : MonoBehaviour
     {
         screen_width = Screen.width;
         screen_height = Screen.height;
+        
+        SetResolution.Instance.Get_ScreenSize();
+        SetResolution.Instance.Set_Panel();
 
         prev_state = eState.None;
         Application.targetFrameRate = 60; // 60 프레임 고정
@@ -173,6 +176,9 @@ public class GameManager : MonoBehaviour
                 LoadStateScene(m_scene, state);
                 break;
             case eState.Draw_Result:
+                LoadStateScene(m_scene, state);
+                break;
+            case eState.Draw_Intro:
                 LoadStateScene(m_scene, state);
                 break;
             default:

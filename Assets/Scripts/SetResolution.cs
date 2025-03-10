@@ -21,19 +21,35 @@ public class SetResolution : MonoBehaviour
     private float m_width;
     private float m_height;
 
+    private static SetResolution _instance;
+    public static SetResolution Instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = FindObjectOfType(typeof(SetResolution)) as SetResolution;
+
+                if (_instance == null)
+                    Debug.Log("no Singleton obj");
+            }
+            return _instance;
+        }
+    }
+
     void Start()
     {
         Get_ScreenSize();
         Set_Panel();
     }
 
-    void Get_ScreenSize()
+    public void Get_ScreenSize()
     {
         screenWidth = GameManager.Instance.screen_width;
         screenHeight = GameManager.Instance.screen_height;
     }
 
-    void Set_Panel()
+    public void Set_Panel()
     {
         if (m_mod == screen_mod.portrait)
         {
