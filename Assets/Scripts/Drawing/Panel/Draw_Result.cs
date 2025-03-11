@@ -69,7 +69,7 @@ public class Draw_Result : MonoBehaviour
         string photoName = DateTime.Now.ToString(("yyyy_MM_dd_HH_mm_ss"));
         string folderName = "POP_Kids_English";
 
-        NativeGallery.SaveImageToGallery(tex, photoName, folderName);
+        NativeGallery.SaveImageToGallery(tex, folderName, photoName);
 
         // 그림 저장 완료 팝업 띄움
         DrawManager.Instance.popup_saveDone.SetActive(true);

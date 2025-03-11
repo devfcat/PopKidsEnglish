@@ -102,7 +102,7 @@ public class Word_DrawResult : MonoBehaviour
         string photoName = WordManager.Instance.m_section + "_" + WordManager.Instance.m_english;
         string folderName = "POP_Kids_English";
 
-        NativeGallery.SaveImageToGallery(m_texture, photoName, folderName);
+        NativeGallery.SaveImageToGallery(m_texture, folderName, photoName);
 
         // 그림 저장 완료 팝업 띄움
         DrawManager.Instance.popup_saveDone.SetActive(true);
