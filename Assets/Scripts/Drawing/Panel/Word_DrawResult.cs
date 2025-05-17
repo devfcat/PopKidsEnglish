@@ -42,7 +42,7 @@ public class Word_DrawResult : MonoBehaviour
         {
             btn_next.SetActive(true);
         }
-    }  
+    }
 
     // 다음 단어 학습 가능
     public void Onclick_Next()
@@ -61,21 +61,21 @@ public class Word_DrawResult : MonoBehaviour
     IEnumerator GetMyPicture()
     {
         string filepath = Application.persistentDataPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.id + ".png";
-        
+
         byte[] byteTexture = System.IO.File.ReadAllBytes(filepath);
         if (byteTexture.Length > 0)
         {
-            Texture2D tex = new Texture2D(2, 2);   
+            Texture2D tex = new Texture2D(2, 2);
 
             tex.LoadImage(byteTexture);
             // tex.Apply();
 
-            m_texture = new Texture2D(2, 2);   
+            m_texture = new Texture2D(2, 2);
             m_texture = tex;
 
             //Destroy(tex);
         }
-        screen_paint.texture = m_texture; 
+        screen_paint.texture = m_texture;
 
         yield return null;
     }
@@ -89,7 +89,7 @@ public class Word_DrawResult : MonoBehaviour
     private IEnumerator CaptureScreenshotAndSave()
     {
         yield return new WaitForEndOfFrame();
-        NativeGallery.Permission permission = NativeGallery.CheckPermission(NativeGallery.PermissionType.Write,NativeGallery.MediaType.Image);
+        NativeGallery.Permission permission = NativeGallery.CheckPermission(NativeGallery.PermissionType.Write, NativeGallery.MediaType.Image);
 
         if (permission == NativeGallery.Permission.Denied)
         {
@@ -106,5 +106,10 @@ public class Word_DrawResult : MonoBehaviour
 
         // 그림 저장 완료 팝업 띄움
         DrawManager.Instance.popup_saveDone.SetActive(true);
+    }
+
+    public void OnClick_RePaint()
+    {
+        GameManager.Instance.SetState(eState.Word_Draw);
     }
 }
