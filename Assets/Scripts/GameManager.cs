@@ -22,8 +22,7 @@ using TMPro;
     /// </summary>
 
     Main_Menu,
-    Main_WordBook, // 단어 목록
-    Main_QuizMenu,
+    Main_WordBook, // 단어장 목록 조회
 
     /// <summary>
     /// 단어 보기, 그리기
@@ -31,7 +30,7 @@ using TMPro;
     
     Word_Main,
     Word_JustAnswer,
-    Word_Draw,
+    Word_Draw, // (그림 / 단어 그리기)
     Word_DrawResult,
     AR,
 
@@ -41,14 +40,22 @@ using TMPro;
     
     Quiz_Main,
 
+    // 추가 필요
+
     /// <summary>
-    /// 그림판 모드 및 내 그림 조회
+    /// 그림판 모드
     /// </summary>
     Draw_Intro, // Draw 시작 전
     Draw, // Draw 씬
     Draw_Result, // Draw 씬
-    MyDrawing_Menu, // 메인 씬
-    MyDrawing_View, // Draw 씬
+
+    /// <summary>
+    /// 내 단어장 보기
+    /// </summary>
+    
+    MyDrawing_List, // 내가 만든 단어장 화면
+    MyDrawing_Menu, // 내가 만든 단어장 주제별 목록조회
+    MyDrawing_View, // 내 단어장 보기 (개별)
     None
  }
 
@@ -144,6 +151,15 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
+        if (state == eState.Splash)
+        {
+
+        }
+        else
+        {
+            LoadStateScene(m_scene, state);
+        }
+        /*
         switch(state)
         {
             case eState.Splash:
@@ -185,6 +201,7 @@ public class GameManager : MonoBehaviour
                 LoadStateScene(m_scene, eState.Main_Menu);
                 break;
         }
+        */
     }
 
 
@@ -192,6 +209,7 @@ public class GameManager : MonoBehaviour
     public void LoadStateScene(string m_sceneName, eState next)
     {
         string n_sceneName = "";
+        n_sceneName = next.ToString();
 
         // 이전 씬이 스플래시였다면 어떤 씬으로 가기를 호출했던지 메인 씬 불러옴
         if (m_sceneName == "Splash")
@@ -199,29 +217,27 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Main");
             return;
         }
-
-        if (next == eState.None)
+        
+        if (next == eState.None || next == eState.Splash)
         {
             Debug.Log("오류 발생");
             return;
         }
-        else if (next == eState.AR)
+
+        if (next == eState.AR)
         {
             n_sceneName = "AR";
         }
-        else if (next == eState.MyDrawing_Menu)
+        else if (n_sceneName.Contains("MyDrawing_") || n_sceneName.Contains("Main_"))
         {
-            n_sceneName = "Main";
+            if (n_sceneName == "MyDrawing_View") n_sceneName = "Draw";
+            else n_sceneName = "Main";
         }
-        else if (next == eState.Quiz_Main)
+        else if (n_sceneName.Contains("Quiz_"))
         {
             n_sceneName = "Quiz";
         }
-        else if (next == eState.Main_Introduce || next == eState.Main_Terms || next == eState.Main_Menu || next == eState.Main_WordBook || next == eState.Main_QuizMenu)
-        {
-            n_sceneName = "Main";
-        }
-        else
+        else if (n_sceneName.Contains("Draw_") || n_sceneName.Contains("Word_"))
         {
             n_sceneName = "Draw";
         }

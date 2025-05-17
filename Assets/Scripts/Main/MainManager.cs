@@ -66,13 +66,13 @@ public class MainManager : MonoBehaviour
                 SetPanels(2);
                 break;
             case eState.Main_WordBook:
-                SetPanels(3);
+                SetPanels(3); 
                 break;
-            case eState.Main_QuizMenu:
-                SetPanels(4);
+            case eState.MyDrawing_List:
+                SetPanels(5);
                 break;
             case eState.MyDrawing_Menu:
-                SetPanels(5);
+                SetPanels(4);
                 break;
             default:
                 Debug.Log("MainManager On_Panel 예외발생");
@@ -124,7 +124,7 @@ public class MainManager : MonoBehaviour
         }
         else
         {
-            icon.SetActive(false);
+            icon.SetActive(true);
             btn_back.SetActive(true);
         }
     }

@@ -14,6 +14,7 @@ public class DrawManager : MonoBehaviour
 
     [Header("AI 단어 설명칸들")] public List<TextMeshProUGUI> ai_infos;
     [Tooltip("AI 설명")] public string info = "";
+    public TextMeshProUGUI word_theme_tmp;
 
     [Header("로딩 처리")]
     public GameObject panel_Loading;
@@ -58,6 +59,8 @@ public class DrawManager : MonoBehaviour
 
         // AI 초기 설정
         AI_Manager.Instance.Init_AI();
+
+        word_theme_tmp.text = "주제 : \n" + WordManager.Instance.m_section;
 
         Get_Audio();
         On_Panel();
@@ -196,6 +199,9 @@ public class DrawManager : MonoBehaviour
                 break;
             case eState.Draw_Intro:
                 GameManager.Instance.SetState(eState.Main_Menu);
+                break;
+            case eState.MyDrawing_View:
+                GameManager.Instance.SetState(eState.MyDrawing_List);
                 break;
             default:
                 GameManager.Instance.SetState(eState.Main_WordBook);

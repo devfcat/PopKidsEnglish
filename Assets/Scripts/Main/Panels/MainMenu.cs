@@ -14,6 +14,6 @@ public class MainMenu : MonoBehaviour
     // 퀴즈 메뉴 들어가기
     public void Open_QuizMenu()
     {
-        GameManager.Instance.SetState(eState.Main_QuizMenu);
+        // GameManager.Instance.SetState(eState.Main_QuizMenu);
     }
 }
