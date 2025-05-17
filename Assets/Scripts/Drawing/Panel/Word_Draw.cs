@@ -27,10 +27,12 @@ public class Word_Draw : MonoBehaviour
     public Texture2D m_picture;
 
     public TextMeshProUGUI word;
+    public TextMeshProUGUI guideLine;
 
     public void OnEnable()
     {
         word.text = WordManager.Instance.m_english;
+        guideLine.text = WordManager.Instance.m_english;
 
         drawing.Clear();
 
