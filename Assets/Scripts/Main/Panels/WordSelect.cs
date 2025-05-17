@@ -65,7 +65,7 @@ public class WordSelect : MonoBehaviour
 
         for (int i = 0; i < length_words; i++)
         {
-            m_wordList[i] =  WordManager.Instance.wordList[i];
+            m_wordList[i] = WordManager.Instance.wordList[i];
         }
 
         // 단어장 구성 
@@ -79,6 +79,8 @@ public class WordSelect : MonoBehaviour
             word_box.SetActive(true);
             instanceBoxes.Add(word_box);
         }
+
+        this.gameObject.GetComponent<ContentSizeExtension>().Size_Fitter();
     }
 
 }

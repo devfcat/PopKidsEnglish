@@ -11,6 +11,7 @@ public class DrawManager : MonoBehaviour
 {
     [Tooltip("패널들")] public List<GameObject> panels;
     [Tooltip("헤더")] public List<GameObject> headers;
+    public GameObject title_header;
 
     [Header("AI 단어 설명칸들")] public List<TextMeshProUGUI> ai_infos;
     [Tooltip("AI 설명")] public string info = "";
@@ -80,31 +81,38 @@ public class DrawManager : MonoBehaviour
                 SetPanels(0);
                 SetHeader(2);
                 AI_Manager.Instance.Get_Info();
+                title_header.SetActive(true);
                 break;
             case eState.Word_JustAnswer:
                 SetPanels(1);
                 SetHeader(1);
+                title_header.SetActive(true);
                 break;
             case eState.Word_Draw:
                 SetPanels(2);
-                SetHeader(2);
+                SetHeader(1);
                 Set_AIText();
+                title_header.SetActive(true);
                 break;
             case eState.Word_DrawResult:
                 SetPanels(3);
                 SetHeader(1);
+                title_header.SetActive(false);
                 break;
             case eState.Draw:
                 SetPanels(4);
                 SetHeader(0);
+                title_header.SetActive(false);
                 break;
             case eState.Draw_Result:
                 SetPanels(5);
                 SetHeader(0);
+                title_header.SetActive(false);
                 break;
             case eState.Draw_Intro:
                 SetPanels(6);
                 SetHeader(0);
+                title_header.SetActive(false);
                 break;
             default:
                 Debug.Log("DrawManager On_Panel 예외발생");
@@ -115,8 +123,9 @@ public class DrawManager : MonoBehaviour
     public void SetBackBTN()
     {
         eState state = GameManager.Instance.m_state;
-
-        switch(state)
+        btn_back.SetActive(true);
+        /*
+        switch (state)
         {
             case eState.Word_DrawResult:
                 btn_back_main.SetActive(false);
@@ -129,6 +138,7 @@ public class DrawManager : MonoBehaviour
                 btn_back.SetActive(true);
                 break;
         }
+        */
     }
 
     // 해당 패널만 키고 나머지는 끄는 메서드
@@ -225,9 +235,6 @@ public class DrawManager : MonoBehaviour
         {
             case eState.Word_Main:
                 ai_infos[0].text = info;
-                break;
-            case eState.Word_Draw:
-                ai_infos[1].text = info;
                 break;
             default:
                 break;

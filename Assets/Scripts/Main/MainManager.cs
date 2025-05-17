@@ -88,6 +88,11 @@ public class MainManager : MonoBehaviour
             if (num == i)
             {
                 panels[i].SetActive(true);
+
+                Vector2 m_position = panels[i].transform.parent.GetComponent<RectTransform>().anchoredPosition;
+                // 스크롤뷰 초기화
+                panels[i].transform.parent.GetComponent<RectTransform>().anchoredPosition
+                = new Vector2(m_position.x, 0f);
             }
             else
             {
