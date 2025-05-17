@@ -1,0 +1,160 @@
+{
+    "wordFile": [
+        {
+            "english": "house",
+            "korean": "집"
+        },
+        {
+            "english": "home",
+            "korean": "가정, 집"
+        },
+        {
+            "english": "room",
+            "korean": "방, 공간"
+        },
+        {
+            "english": "door",
+            "korean": "문, 출입구"
+        },
+        {
+            "english": "window",
+            "korean": "창문"
+        },
+        {
+            "english": "floor",
+            "korean": "바닥"
+        },
+        {
+            "english": "ceiling",
+            "korean": "천장"
+        },
+        {
+            "english": "wall",
+            "korean": "벽"
+        },
+        {
+            "english": "roof",
+            "korean": "지붕"
+        },
+        {
+            "english": "kitchen",
+            "korean": "부엌"
+        },
+        {
+            "english": "bathroom",
+            "korean": "욕실"
+        },
+        {
+            "english": "bedroom",
+            "korean": "침실"
+        },
+        {
+            "english": "living room",
+            "korean": "거실"
+        },
+        {
+            "english": "dining room",
+            "korean": "식당"
+        },
+        {
+            "english": "garden",
+            "korean": "정원"
+        },
+        {
+            "english": "balcony",
+            "korean": "발코니"
+        },
+        {
+            "english": "garage",
+            "korean": "차고"
+        },
+        {
+            "english": "stairs",
+            "korean": "계단"
+        },
+        {
+            "english": "couch",
+            "korean": "소파"
+        },
+        {
+            "english": "table",
+            "korean": "테이블, 식탁"
+        },
+        {
+            "english": "chair",
+            "korean": "의자"
+        },
+        {
+            "english": "bed",
+            "korean": "침대"
+        },
+        {
+            "english": "pillow",
+            "korean": "베개"
+        },
+        {
+            "english": "blanket",
+            "korean": "담요"
+        },
+        {
+            "english": "lamp",
+            "korean": "램프, 전등"
+        },
+        {
+            "english": "mirror",
+            "korean": "거울"
+        },
+        {
+            "english": "closet",
+            "korean": "옷장"
+        },
+        {
+            "english": "drawer",
+            "korean": "서랍"
+        },
+        {
+            "english": "carpet",
+            "korean": "카펫, 양탄자"
+        },
+        {
+            "english": "curtain",
+            "korean": "커튼"
+        },
+        {
+            "english": "sink",
+            "korean": "싱크대"
+        },
+        {
+            "english": "bathtub",
+            "korean": "욕조"
+        },
+        {
+            "english": "toilet",
+            "korean": "변기"
+        },
+        {
+            "english": "refrigerator",
+            "korean": "냉장고"
+        },
+        {
+            "english": "oven",
+            "korean": "오븐"
+        },
+        {
+            "english": "microwave",
+            "korean": "전자레인지"
+        },
+        {
+            "english": "washing machine",
+            "korean": "세탁기"
+        },
+        {
+            "english": "vacuum cleaner",
+            "korean": "청소기"
+        },
+        {
+            "english": "clock",
+            "korean": "시계"
+        }
+    ]
+}

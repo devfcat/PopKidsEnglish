@@ -1,0 +1,160 @@
+{
+    "wordFile": [
+        {
+            "english": "clothes",
+            "korean": "옷"
+        },
+        {
+            "english": "shirt",
+            "korean": "셔츠"
+        },
+        {
+            "english": "t-shirt",
+            "korean": "티셔츠"
+        },
+        {
+            "english": "pants",
+            "korean": "바지"
+        },
+        {
+            "english": "shorts",
+            "korean": "반바지"
+        },
+        {
+            "english": "jeans",
+            "korean": "청바지"
+        },
+        {
+            "english": "skirt",
+            "korean": "치마"
+        },
+        {
+            "english": "dress",
+            "korean": "드레스, 원피스"
+        },
+        {
+            "english": "jacket",
+            "korean": "재킷, 자켓"
+        },
+        {
+            "english": "coat",
+            "korean": "코트"
+        },
+        {
+            "english": "sweater",
+            "korean": "스웨터"
+        },
+        {
+            "english": "hoodie",
+            "korean": "후드티"
+        },
+        {
+            "english": "socks",
+            "korean": "양말"
+        },
+        {
+            "english": "shoes",
+            "korean": "신발"
+        },
+        {
+            "english": "boots",
+            "korean": "부츠"
+        },
+        {
+            "english": "sandals",
+            "korean": "샌들"
+        },
+        {
+            "english": "hat",
+            "korean": "모자"
+        },
+        {
+            "english": "cap",
+            "korean": "야구모자"
+        },
+        {
+            "english": "scarf",
+            "korean": "목도리"
+        },
+        {
+            "english": "gloves",
+            "korean": "장갑"
+        },
+        {
+            "english": "mittens",
+            "korean": "벙어리장갑"
+        },
+        {
+            "english": "belt",
+            "korean": "벨트"
+        },
+        {
+            "english": "tie",
+            "korean": "넥타이"
+        },
+        {
+            "english": "swimsuit",
+            "korean": "수영복"
+        },
+        {
+            "english": "pajamas",
+            "korean": "잠옷"
+        },
+        {
+            "english": "uniform",
+            "korean": "유니폼"
+        },
+        {
+            "english": "raincoat",
+            "korean": "우비"
+        },
+        {
+            "english": "vest",
+            "korean": "조끼"
+        },
+        {
+            "english": "blouse",
+            "korean": "블라우스"
+        },
+        {
+            "english": "underwear",
+            "korean": "속옷"
+        },
+        {
+            "english": "leggings",
+            "korean": "레깅스"
+        },
+        {
+            "english": "overalls",
+            "korean": "멜빵바지"
+        },
+        {
+            "english": "earmuffs",
+            "korean": "귀마개"
+        },
+        {
+            "english": "robe",
+            "korean": "가운"
+        },
+        {
+            "english": "handkerchief",
+            "korean": "손수건"
+        },
+        {
+            "english": "apron",
+            "korean": "앞치마"
+        },
+        {
+            "english": "watch",
+            "korean": "손목시계"
+        },
+        {
+            "english": "sunglasses",
+            "korean": "선글라스"
+        },
+        {
+            "english": "backpack",
+            "korean": "배낭"
+        }
+    ]
+}

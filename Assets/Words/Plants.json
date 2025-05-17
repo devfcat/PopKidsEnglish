@@ -1,0 +1,152 @@
+{
+    "wordFile": [
+        {
+            "english": "plant",
+            "korean": "식물"
+        },
+        {
+            "english": "tree",
+            "korean": "나무"
+        },
+        {
+            "english": "flower",
+            "korean": "꽃"
+        },
+        {
+            "english": "grass",
+            "korean": "풀, 잔디"
+        },
+        {
+            "english": "leaf",
+            "korean": "잎사귀"
+        },
+        {
+            "english": "root",
+            "korean": "뿌리"
+        },
+        {
+            "english": "stem",
+            "korean": "줄기"
+        },
+        {
+            "english": "seed",
+            "korean": "씨앗"
+        },
+        {
+            "english": "bush",
+            "korean": "덤불"
+        },
+        {
+            "english": "vine",
+            "korean": "덩굴"
+        },
+        {
+            "english": "petal",
+            "korean": "꽃잎"
+        },
+        {
+            "english": "fruit",
+            "korean": "열매"
+        },
+        {
+            "english": "vegetable",
+            "korean": "채소"
+        },
+        {
+            "english": "cactus",
+            "korean": "선인장"
+        },
+        {
+            "english": "mushroom",
+            "korean": "버섯"
+        },
+        {
+            "english": "bamboo",
+            "korean": "대나무"
+        },
+        {
+            "english": "forest",
+            "korean": "숲"
+        },
+        {
+            "english": "garden",
+            "korean": "정원"
+        },
+        {
+            "english": "branch",
+            "korean": "나뭇가지"
+        },
+        {
+            "english": "soil",
+            "korean": "흙"
+        },
+        {
+            "english": "acorn",
+            "korean": "도토리"
+        },
+        {
+            "english": "sunflower",
+            "korean": "해바라기"
+        },
+        {
+            "english": "rose",
+            "korean": "장미"
+        },
+        {
+            "english": "daisy",
+            "korean": "데이지"
+        },
+        {
+            "english": "tulip",
+            "korean": "튤립"
+        },
+        {
+            "english": "lily",
+            "korean": "백합"
+        },
+        {
+            "english": "oak",
+            "korean": "참나무"
+        },
+        {
+            "english": "pine",
+            "korean": "소나무"
+        },
+        {
+            "english": "willow",
+            "korean": "버드나무"
+        },
+        {
+            "english": "maple",
+            "korean": "단풍나무"
+        },
+        {
+            "english": "coconut tree",
+            "korean": "코코넛 나무"
+        },
+        {
+            "english": "herb",
+            "korean": "허브"
+        },
+        {
+            "english": "clover",
+            "korean": "클로버"
+        },
+        {
+            "english": "dandelion",
+            "korean": "민들레"
+        },
+        {
+            "english": "ivy",
+            "korean": "담쟁이덩굴"
+        },
+        {
+            "english": "algae",
+            "korean": "조류, 해조"
+        },
+        {
+            "english": "moss",
+            "korean": "이끼"
+        }
+    ]
+}

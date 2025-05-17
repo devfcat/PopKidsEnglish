@@ -1,0 +1,156 @@
+{
+    "wordFile": [
+        {
+            "english": "apple",
+            "korean": "사과"
+        },
+        {
+            "english": "banana",
+            "korean": "바나나"
+        },
+        {
+            "english": "grape",
+            "korean": "포도"
+        },
+        {
+            "english": "strawberry",
+            "korean": "딸기"
+        },
+        {
+            "english": "orange",
+            "korean": "오렌지"
+        },
+        {
+            "english": "watermelon",
+            "korean": "수박"
+        },
+        {
+            "english": "carrot",
+            "korean": "당근"
+        },
+        {
+            "english": "tomato",
+            "korean": "토마토"
+        },
+        {
+            "english": "potato",
+            "korean": "감자"
+        },
+        {
+            "english": "rice",
+            "korean": "쌀, 밥"
+        },
+        {
+            "english": "bread",
+            "korean": "빵"
+        },
+        {
+            "english": "cheese",
+            "korean": "치즈"
+        },
+        {
+            "english": "egg",
+            "korean": "달걀"
+        },
+        {
+            "english": "milk",
+            "korean": "우유"
+        },
+        {
+            "english": "chicken",
+            "korean": "닭고기"
+        },
+        {
+            "english": "fish",
+            "korean": "생선"
+        },
+        {
+            "english": "soup",
+            "korean": "국, 수프"
+        },
+        {
+            "english": "noodles",
+            "korean": "국수"
+        },
+        {
+            "english": "candy",
+            "korean": "사탕"
+        },
+        {
+            "english": "chocolate",
+            "korean": "초콜릿"
+        },
+        {
+            "english": "pear",
+            "korean": "배(음식)"
+        },
+        {
+            "english": "peach",
+            "korean": "복숭아"
+        },
+        {
+            "english": "pineapple",
+            "korean": "파인애플"
+        },
+        {
+            "english": "kiwi",
+            "korean": "키위"
+        },
+        {
+            "english": "lemon",
+            "korean": "레몬"
+        },
+        {
+            "english": "mango",
+            "korean": "망고"
+        },
+        {
+            "english": "cucumber",
+            "korean": "오이"
+        },
+        {
+            "english": "onion",
+            "korean": "양파"
+        },
+        {
+            "english": "lettuce",
+            "korean": "상추"
+        },
+        {
+            "english": "corn",
+            "korean": "옥수수"
+        },
+        {
+            "english": "butter",
+            "korean": "버터"
+        },
+        {
+            "english": "honey",
+            "korean": "꿀"
+        },
+        {
+            "english": "jam",
+            "korean": "잼"
+        },
+        {
+            "english": "yogurt",
+            "korean": "요거트"
+        },
+        {
+            "english": "ice cream",
+            "korean": "아이스크림"
+        },
+        {
+            "english": "juice",
+            "korean": "주스"
+        },
+        {
+            "english": "cookie",
+            "korean": "쿠키"
+        },
+        {
+            "english": "pancake",
+            "korean": "팬케이크"
+        }
+    ]
+}
