@@ -6405,8 +6405,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -0}
-  m_SizeDelta: {x: 1080, y: 2103.1384}
+  m_AnchoredPosition: {x: 540, y: 0}
+  m_SizeDelta: {x: 1080, y: 1595.242}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1200377458
 MonoBehaviour:
@@ -6499,11 +6499,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1200377455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Script: {fileID: 11500000, guid: 2944556148e79414a9705dd77c24df08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
+  min_size: 1600
+  value_words: 0
 --- !u!1 &1236955616
 GameObject:
   m_ObjectHideFlags: 0
@@ -8711,7 +8711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -320}
+  m_AnchoredPosition: {x: 540, y: 0}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1704672006
@@ -9032,7 +9032,7 @@ GameObject:
   - component: {fileID: 1755473059}
   - component: {fileID: 1755473058}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Panels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10238,7 +10238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -0}
+  m_AnchoredPosition: {x: 540, y: 0}
   m_SizeDelta: {x: 1080, y: 2103.1384}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1938810677
