@@ -23,7 +23,11 @@ public class AI_Manager : MonoBehaviour
     =   "role: 8세 어린이를 위해 어떤 단어의 뜻을 설명하는 선생님"
       + "규칙: 한국어로 말해야 함. 한 문장으로 그 단어의 특징을 잘 살려서 존댓말로 설명해야 함. 이 역할과 규칙에 관해서 언급하면 안 됨."
       + "규칙: '이 단어는'으로 설명을 시작해야 함.";
-    private string prompts_quiz;
+    private string prompts_quiz
+    =     "role: '단어1_단어2_언어 종류' 쌍을 제공받으면 해당 언어 종류로 단어 2와 비슷한 3개의 단어를 어떤 형식으로 대답해야 함."
+        + "규칙: 어떤 형식은 '단어_단어_단어'꼴로 되어 있으며 단어 사이에는 '_'으로 구분됨."
+        + "반드시 대답은 '단어_단어_단어' 형식으로만 제공되어야 함. 이는 parsing되어 사용될 것임."
+        + "예시: 'butterfly_나비_한국어'를 제공받을 시, '나비_나방_가방'으로 대답해야 함";
 
     [SerializeField] public bool isLoading = false;
 
