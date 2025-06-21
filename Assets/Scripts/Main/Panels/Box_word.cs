@@ -13,6 +13,7 @@ public class Box_word : MonoBehaviour
         WordManager.Instance.m_english = WordManager.Instance.wordList[id].english;
         WordManager.Instance.m_korean = WordManager.Instance.wordList[id].korean;
 
-        GameManager.Instance.SetState(eState.Word_Main);
+        if (GameManager.Instance.m_state == eState.MyDrawing_Menu) GameManager.Instance.SetState(eState.MyDrawing_View);
+        else GameManager.Instance.SetState(eState.Word_Main);
     }
 }
