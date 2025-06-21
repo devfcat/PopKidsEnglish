@@ -16,7 +16,7 @@ public class Navigation : MonoBehaviour
         {
             Draw_Navigation(0);
         }
-        else if (GameManager.Instance.m_state == eState.MyDrawing_Menu)
+        else if (GameManager.Instance.m_state == eState.MyDrawing_List)
         {
             Draw_Navigation(2);
         }
@@ -57,7 +57,7 @@ public class Navigation : MonoBehaviour
                 GameManager.Instance.SetState(eState.Draw_Intro);
                 break;
             case 2:
-                GameManager.Instance.SetState(eState.MyDrawing_Menu);
+                GameManager.Instance.SetState(eState.MyDrawing_List);
                 break;
             default:
                 break;
