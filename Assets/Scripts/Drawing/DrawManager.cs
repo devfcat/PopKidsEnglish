@@ -25,6 +25,10 @@ public class DrawManager : MonoBehaviour
     public GameObject btn_back_result;
     public GameObject btn_back_main;
 
+    [Header("그림 그리기 단계")]
+    public StepUI step_ui;
+    public WordCard_Front word_card_front;
+
     public GameObject popup_saveDone; // 그림 저장 완료 팝업
 
     [SerializeField] private int isAudioActive; // 소리 켜짐(0) 꺼짐(1)
@@ -82,6 +86,7 @@ public class DrawManager : MonoBehaviour
                 SetHeader(2);
                 AI_Manager.Instance.Get_Info();
                 title_header.SetActive(true);
+                step_ui.step = 0;
                 break;
             case eState.Word_JustAnswer:
                 SetPanels(1);
@@ -93,11 +98,13 @@ public class DrawManager : MonoBehaviour
                 SetHeader(1);
                 Set_AIText();
                 title_header.SetActive(true);
+                step_ui.step = 1;
                 break;
             case eState.Word_DrawResult:
                 SetPanels(3);
                 SetHeader(1);
                 title_header.SetActive(false);
+                step_ui.step = 2;
                 break;
             case eState.Draw:
                 SetPanels(4);
@@ -112,6 +119,12 @@ public class DrawManager : MonoBehaviour
             case eState.Draw_Intro:
                 SetPanels(6);
                 SetHeader(0);
+                title_header.SetActive(false);
+                break;
+            case eState.MyDrawing_View:
+                //SetPanels(7);
+                //SetHeader(0);
+                Debug.Log("내 단어장 보기 화면 추가");
                 title_header.SetActive(false);
                 break;
             default:
@@ -211,7 +224,7 @@ public class DrawManager : MonoBehaviour
                 GameManager.Instance.SetState(eState.Main_Menu);
                 break;
             case eState.MyDrawing_View:
-                GameManager.Instance.SetState(eState.MyDrawing_List);
+                GameManager.Instance.SetState(eState.MyDrawing_Menu);
                 break;
             default:
                 GameManager.Instance.SetState(eState.Main_WordBook);
@@ -235,6 +248,10 @@ public class DrawManager : MonoBehaviour
         {
             case eState.Word_Main:
                 ai_infos[0].text = info;
+                // TTS 재생 중지
+                Play_KoreanTTS.Instance.Stop();
+                // 세팅이 완료되었다면 한국어 설명 재생
+                word_card_front.Play(info);
                 break;
             default:
                 break;
