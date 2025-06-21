@@ -31,6 +31,7 @@ using TMPro;
     Word_Main,
     Word_JustAnswer,
     Word_Draw, // (그림 / 단어 그리기)
+    Word_Write, // 단어 쓰기
     Word_DrawResult,
     AR,
 
