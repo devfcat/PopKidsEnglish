@@ -47,6 +47,8 @@ public class Word_DrawResult : MonoBehaviour
     // 다음 단어 학습 가능
     public void Onclick_Next()
     {
+        DrawManager.Instance.info = "";
+
         int m_id = WordManager.Instance.id;
         WordManager.Instance.id = m_id + 1;
         m_id = WordManager.Instance.id;

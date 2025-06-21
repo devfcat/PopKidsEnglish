@@ -73,7 +73,7 @@ public class WordManager : MonoBehaviour
 
     void Start()
     {
-        Init();
+        if (GameManager.Instance.m_state == eState.Splash) Init();
     }
 
     void Init()
@@ -166,16 +166,49 @@ public class WordManager : MonoBehaviour
         {
             // 다운로드할 url
             string url = __url + section + ".json";
+            Debug.Log("다운로드 시도 URL: " + url);
+            
             UnityWebRequest request = UnityWebRequest.Get(url);
+            
+            // 헤더 추가 (403 오류 해결을 위해)
+            request.SetRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+            request.SetRequestHeader("Accept", "application/json");
+            request.SetRequestHeader("Accept-Language", "ko-KR,ko;q=0.9,en;q=0.8");
+            
             yield return request.SendWebRequest();
 
             // 에러 발생 시 
             if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
             {
-                isLoading = false;
                 Debug.LogError("File download error: " + request.error);
+                Debug.LogError("Response Code: " + request.responseCode);
+                Debug.LogError("URL: " + url);
 
-                GameManager.Instance.ErrorCode = 100;
+                // 403 오류인 경우 특별 처리
+                if (request.responseCode == 403)
+                {
+                    Debug.LogError("403 Forbidden: 서버에서 접근을 거부했습니다.");
+                    
+                    // 기존 파일이 있다면 그것을 사용
+                    if (File.Exists(filePath))
+                    {
+                        Debug.Log("기존 파일을 사용합니다: " + filePath);
+                        Set_WordBooks(filePath);
+                        isLoading = false;
+                        yield break;
+                    }
+                    else
+                    {
+                        // 기존 파일도 없으면 기본 데이터 생성
+                        Debug.Log("기본 단어 데이터를 생성합니다.");
+                        CreateDefaultWordData(section);
+                        isLoading = false;
+                        yield break;
+                    }
+                }
+
+                isLoading = false;
+                // GameManager.Instance.ErrorCode = 100;
             }
             else // 정상 작동
             {
@@ -184,9 +217,48 @@ public class WordManager : MonoBehaviour
                 Debug.Log("File downloaded to: " + filePath);
 
                 Set_WordBooks(filePath);
+                m_section = section;
                 isLoading = false;
             }
         }
+    }
+
+    // 기본 단어 데이터 생성 (403 오류 시 사용)
+    private void CreateDefaultWordData(string section)
+    {
+        string filePath = Path.Combine(Application.persistentDataPath, "Word/" + section + ".json");
+        
+        // 기본 단어 데이터 생성
+        WordBook defaultWordBook = new WordBook();
+        defaultWordBook.wordFile = new List<Word>();
+        
+        // 섹션에 따른 기본 단어들 추가
+        switch (section.ToLower())
+        {
+            case "family":
+                defaultWordBook.wordFile.Add(new Word { english = "mother", korean = "어머니" });
+                defaultWordBook.wordFile.Add(new Word { english = "father", korean = "아버지" });
+                defaultWordBook.wordFile.Add(new Word { english = "sister", korean = "자매" });
+                defaultWordBook.wordFile.Add(new Word { english = "brother", korean = "형제" });
+                break;
+            case "animals":
+                defaultWordBook.wordFile.Add(new Word { english = "cat", korean = "고양이" });
+                defaultWordBook.wordFile.Add(new Word { english = "dog", korean = "강아지" });
+                defaultWordBook.wordFile.Add(new Word { english = "bird", korean = "새" });
+                defaultWordBook.wordFile.Add(new Word { english = "fish", korean = "물고기" });
+                break;
+            default:
+                defaultWordBook.wordFile.Add(new Word { english = "hello", korean = "안녕하세요" });
+                defaultWordBook.wordFile.Add(new Word { english = "world", korean = "세계" });
+                break;
+        }
+        
+        // JSON으로 변환하여 저장
+        string json = JsonUtility.ToJson(defaultWordBook, true);
+        File.WriteAllText(filePath, json);
+        
+        Debug.Log("기본 단어 데이터 생성 완료: " + filePath);
+        Set_WordBooks(filePath);
     }
 
     // 단어장 화면을 구성함
@@ -209,7 +281,13 @@ public class WordManager : MonoBehaviour
         {
             wordList[i] = content.wordFile[i] as Word;
         }
-        WordSelect.Instance.MakeWordBook();
+
+        // 현재 상태에 해당하는 단어장 화면을 구성함
+        if (GameManager.Instance.m_state == eState.Main_WordBook)
+        {
+            WordSelect.Instance.MakeWordBook();
+        }
+        else {}
     }
 
     // 사용가능한 퀴즈 목록을 엶

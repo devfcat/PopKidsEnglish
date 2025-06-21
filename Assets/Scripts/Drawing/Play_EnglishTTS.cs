@@ -21,18 +21,33 @@ public class Play_EnglishTTS : MonoBehaviour
 
     public string this_word; // 현재 음성파일의 단어
 
+    // 싱글톤 인스턴스
+    private static Play_EnglishTTS _instance;
+    public static Play_EnglishTTS Instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = FindObjectOfType(typeof(Play_EnglishTTS)) as Play_EnglishTTS;
+
+                if (_instance == null)
+                    Debug.Log("no Singleton obj");
+            }
+            return _instance;
+        }
+    }
+
     void Start()
     {
         apiKey = AI_Manager.Instance.API_KEY;
 
         if(!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
         {
-            // 카메라 권한이 없다면 권한을 요청함
             Permission.RequestUserPermission(Permission.ExternalStorageRead);
         }
         if(!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
         {
-            // 카메라 권한이 없다면 권한을 요청함
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
         }
     }
@@ -60,7 +75,6 @@ public class Play_EnglishTTS : MonoBehaviour
     public async Task Create_Word(string text_word)
     {
         Debug.Log("음성 파일을 생성합니다");
-        AI_Manager.Instance.isLoading = true;
 
         using (HttpClient client = new HttpClient())
         {
@@ -96,7 +110,6 @@ public class Play_EnglishTTS : MonoBehaviour
                 if (!File.Exists(filePath))
                 {
                     GameManager.Instance.ErrorCode = 200;
-                    AI_Manager.Instance.isLoading = false;
                 }
                 else
                 {
@@ -108,7 +121,6 @@ public class Play_EnglishTTS : MonoBehaviour
             else
             {
                 GameManager.Instance.ErrorCode = 200;
-                AI_Manager.Instance.isLoading = false;
             }
         }
     }
@@ -124,7 +136,6 @@ public class Play_EnglishTTS : MonoBehaviour
         {
             Debug.LogError("불러오기 실패");
             GameManager.Instance.ErrorCode = 201;
-            AI_Manager.Instance.isLoading = false;
         }
 
         string fileUrl = "file://" + filePath;
@@ -138,7 +149,6 @@ public class Play_EnglishTTS : MonoBehaviour
             {
                 Debug.LogError("불러오기 실패: " + www.error);
                 GameManager.Instance.ErrorCode = 201;
-                AI_Manager.Instance.isLoading = false;
                 yield break;
             }
 
@@ -165,9 +175,6 @@ public class Play_EnglishTTS : MonoBehaviour
             audioSource.Play();
         }
         */
-
-        AI_Manager.Instance.isLoading = false;
-
         yield return null;
     }
 }

@@ -69,10 +69,10 @@ public class MainManager : MonoBehaviour
                 SetPanels(3); 
                 break;
             case eState.MyDrawing_List:
-                SetPanels(5);
+                SetPanels(4);
                 break;
             case eState.MyDrawing_Menu:
-                SetPanels(4);
+                SetPanels(5);
                 break;
             default:
                 Debug.Log("MainManager On_Panel 예외발생");
@@ -134,9 +134,10 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    public void GoHome()
+    public void OnClick_Back()
     {
-        GameManager.Instance.SetState(eState.Main_Menu);
+        if (GameManager.Instance.m_state == eState.MyDrawing_Menu) GameManager.Instance.SetState(eState.MyDrawing_List);
+        else GameManager.Instance.SetState(eState.Main_Menu);
     }
 
     // 소리 버튼 초기 설정 (시작 시 한번만 실행됨)
