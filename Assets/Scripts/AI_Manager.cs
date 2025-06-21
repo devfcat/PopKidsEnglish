@@ -62,6 +62,12 @@ public class AI_Manager : MonoBehaviour
 
     void Start()
     {
+        if (string.IsNullOrEmpty(API_KEY))
+        {
+            Debug.LogWarning("API_KEY가 설정되지 않았습니다. Inspector에서 API_KEY를 설정해주세요.");
+            return;
+        }
+        
         api = new OpenAIAPI(API_KEY);
     }
 
@@ -108,6 +114,24 @@ public class AI_Manager : MonoBehaviour
     {
         isLoading = true;
 
+        // api 객체가 null인지 확인하고 초기화
+        if (api == null)
+        {
+            if (string.IsNullOrEmpty(API_KEY))
+            {
+                Debug.LogError("API_KEY가 설정되지 않았습니다!");
+                isLoading = false;
+                return;
+            }
+            api = new OpenAIAPI(API_KEY);
+        }
+
+        // messages가 null인지 확인하고 초기화
+        if (messages == null)
+        {
+            Init_AI(state);
+        }
+
         // 입력한 메세지를 가져옴
         ChatMessage userMessage = new ChatMessage();
         userMessage.Role = ChatMessageRole.User;
@@ -117,46 +141,55 @@ public class AI_Manager : MonoBehaviour
         messages.Add(userMessage);
         message_record.Add(userMessage.Content);
 
-        // 전체 채팅을 openAI 서버에전송하여 다음 메시지(응답)를 가져오도록
-        var chatResult = await api.Chat.CreateChatCompletionAsync(
-            new ChatRequest()
-            {
-                Model = Model.ChatGPTTurbo,
-                Temperature = 0.1,
-                MaxTokens = 200,
-                Messages = messages,
-            }
-        );
-
-        //응답 가져오기
-        ChatMessage responseMessage = new ChatMessage();
-        responseMessage.Role = ChatMessageRole.Assistant;
-        responseMessage.Content = chatResult.Choices[0].Message.Content;
-
-        //응답을 message리스트에 추가
-        messages.Add(responseMessage);
-        string msg = (responseMessage.Content).Replace(Environment.NewLine, ""); // 개행문자를 없앰
-        message_record.Add(msg);
-
-        if (state == "info")
+        try
         {
-            string newInfo = msg.Replace(WordManager.Instance.m_korean, WordManager.Instance.m_english);
-            try
+            // 전체 채팅을 openAI 서버에전송하여 다음 메시지(응답)를 가져오도록
+            var chatResult = await api.Chat.CreateChatCompletionAsync(
+                new ChatRequest()
+                {
+                    Model = Model.ChatGPTTurbo,
+                    Temperature = 0.1,
+                    MaxTokens = 200,
+                    Messages = messages,
+                }
+            );
+
+            //응답 가져오기
+            ChatMessage responseMessage = new ChatMessage();
+            responseMessage.Role = ChatMessageRole.Assistant;
+            responseMessage.Content = chatResult.Choices[0].Message.Content;
+
+            //응답을 message리스트에 추가
+            messages.Add(responseMessage);
+            string msg = (responseMessage.Content).Replace(Environment.NewLine, ""); // 개행문자를 없앰
+            message_record.Add(msg);
+
+            if (state == "info")
             {
-                newInfo = newInfo.Replace(WordManager.Instance.m_english + "은", WordManager.Instance.m_english + "은(는)");
+                string newInfo = msg.Replace(WordManager.Instance.m_korean, WordManager.Instance.m_english);
+                try
+                {
+                    newInfo = newInfo.Replace(WordManager.Instance.m_english + "은", WordManager.Instance.m_english + "은(는)");
+                }
+                catch
+                {
+                    Debug.Log("해당 단어 없음");
+                }
+                DrawManager.Instance.info = newInfo;
+                DrawManager.Instance.Set_AIText();
             }
-            catch
+            else
             {
-                Debug.Log("해당 단어 없음");
+
             }
-            DrawManager.Instance.info = newInfo;
-            DrawManager.Instance.Set_AIText();
         }
-        else
+        catch (Exception e)
         {
-
+            Debug.LogError("AI 응답 처리 중 오류 발생: " + e.Message);
         }
-
-        isLoading = false;
+        finally
+        {
+            isLoading = false;
+        }
     }
 }
