@@ -12,11 +12,29 @@ public class LearnSelect_View : MonoBehaviour
     public GameObject box_word;
 
     [Header("관리용 리스트")]
-    [SerializeField] private List<GameObject> instanceBoxes = new List<GameObject>(); // 인스턴스 박스들을 관리하기 위한 변수
-    [SerializeField] private List<int> learnedWordIds = new List<int>(); // 학습한 단어 ID 리스트
+    [SerializeField] public List<GameObject> instanceBoxes = new List<GameObject>(); // 인스턴스 박스들을 관리하기 위한 변수
+    [SerializeField] public List<int> learnedWordIds = new List<int>(); // 학습한 단어 ID 리스트
 
     private string previousSearchText = "";
     public GameObject noWordUI;
+
+    // 싱글톤 인스턴스
+    private static LearnSelect_View _instance;
+    public static LearnSelect_View Instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = FindObjectOfType(typeof(LearnSelect_View)) as LearnSelect_View;
+
+                if (_instance == null)
+                    Debug.Log("no Singleton obj");
+            }
+            return _instance;
+        }
+    }
+    
     void OnEnable()
     {
         tmp_section.text = LearnSelect_Manager.Instance.m_selected_section;
@@ -142,6 +160,9 @@ public class LearnSelect_View : MonoBehaviour
             word_box.SetActive(true);
             instanceBoxes.Add(word_box);
         }
+
+        // ContentSizeExtension 적용
+        this.gameObject.GetComponent<ContentSizeFitter_Extension_MyWords>().Size_Fitter();
     }
 
     // 학습한 단어 목록을 구성하는 코루틴
@@ -155,6 +176,9 @@ public class LearnSelect_View : MonoBehaviour
 
         // 단어 박스들 생성
         yield return StartCoroutine(CreateWordBoxes());
+
+        // ContentSizeExtension 적용
+        this.gameObject.GetComponent<ContentSizeFitter_Extension_MyWords>().Size_Fitter();
     }
 
     // 이전 리스트 정리
