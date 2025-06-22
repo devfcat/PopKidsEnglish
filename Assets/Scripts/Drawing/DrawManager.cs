@@ -12,6 +12,7 @@ public class DrawManager : MonoBehaviour
     [Tooltip("패널들")] public List<GameObject> panels;
     [Tooltip("헤더")] public List<GameObject> headers;
     public GameObject title_header;
+    public GameObject step_header;
 
     [Header("AI 단어 설명칸들")] public List<TextMeshProUGUI> ai_infos;
     [Tooltip("AI 설명")] public string info = "";
@@ -86,46 +87,47 @@ public class DrawManager : MonoBehaviour
                 SetHeader(2);
                 AI_Manager.Instance.Get_Info();
                 title_header.SetActive(true);
+                step_header.SetActive(true);
                 step_ui.step = 0;
-                break;
-            case eState.Word_JustAnswer:
-                SetPanels(1);
-                SetHeader(1);
-                title_header.SetActive(true);
                 break;
             case eState.Word_Draw:
                 SetPanels(2);
                 SetHeader(1);
                 Set_AIText();
                 title_header.SetActive(true);
+                step_header.SetActive(true);
                 step_ui.step = 1;
                 break;
             case eState.Word_DrawResult:
                 SetPanels(3);
                 SetHeader(1);
                 title_header.SetActive(false);
+                step_header.SetActive(true);
                 step_ui.step = 2;
                 break;
             case eState.Draw:
                 SetPanels(4);
                 SetHeader(0);
                 title_header.SetActive(false);
+                step_header.SetActive(false);
                 break;
             case eState.Draw_Result:
                 SetPanels(5);
                 SetHeader(0);
                 title_header.SetActive(false);
+                step_header.SetActive(false);
                 break;
             case eState.Draw_Intro:
                 SetPanels(6);
                 SetHeader(0);
                 title_header.SetActive(false);
+                step_header.SetActive(false);
                 break;
             case eState.MyDrawing_View:
-                //SetPanels(7);
-                //SetHeader(0);
-                Debug.Log("내 단어장 보기 화면 추가");
-                title_header.SetActive(false);
+                SetPanels(7);
+                SetHeader(1);
+                title_header.SetActive(true);
+                step_header.SetActive(false);
                 break;
             default:
                 Debug.Log("DrawManager On_Panel 예외발생");
