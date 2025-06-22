@@ -258,7 +258,7 @@ public class GameManager : MonoBehaviour
             }
             else if (n_sceneName == "Quiz")
             {
-                
+                QuizManager.Instance.On_Panel();
             }
 
         }
