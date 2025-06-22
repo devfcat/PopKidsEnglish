@@ -43,7 +43,7 @@ public class MyDrawing_List : MonoBehaviour
         yield return StartCoroutine(CreateWordBoxes());
 
         // ContentSizeExtension 적용
-        this.gameObject.GetComponent<ContentSizeExtension>().Size_Fitter();
+        this.gameObject.GetComponent<ContentSizeFitter_Extension_MyWords>().Size_Fitter();
     }
 
     // 이전 리스트 정리

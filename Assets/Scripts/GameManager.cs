@@ -38,10 +38,9 @@ using TMPro;
     /// <summary>
     /// AI 생성 퀴즈
     /// </summary>
-    
-    Quiz_Main,
-
-    // 추가 필요
+    Quiz_Intro, // 퀴즈 표지
+    Quiz_Main, // 퀴즈 메인
+    Quiz_Result, // 퀴즈 결과
 
     /// <summary>
     /// 그림판 모드

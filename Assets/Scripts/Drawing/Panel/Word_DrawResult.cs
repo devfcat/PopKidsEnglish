@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class Word_DrawResult : MonoBehaviour
 {
@@ -79,10 +80,30 @@ public class Word_DrawResult : MonoBehaviour
         }
         screen_paint.texture = m_texture;
 
+        // 완성 단계에서 정상적으로 내 그림을 가져왔다면 내 기기에 파일을 저장해둠
+        SaveMyWordCard();
+
         yield return null;
     }
 
-    // 내가 그림을 갤러리에 저장함
+    // 내 단어장 카드를 persistentDataPath에 저장함
+    public void SaveMyWordCard()
+    {
+        string directoryPath = Application.persistentDataPath + "/MyData";
+        string filepath = directoryPath + "/" + WordManager.Instance.m_section + "_" + WordManager.Instance.id + ".png";
+        
+        // MyData 디렉토리가 없으면 생성
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+            Debug.Log("MyData 디렉토리를 생성했습니다: " + directoryPath);
+        }
+        
+        File.WriteAllBytes(filepath, m_texture.EncodeToPNG());
+        Debug.Log("단어장 카드가 저장되었습니다: " + filepath);
+    }
+
+    // 내 그림을 갤러리에 저장함
     public void SaveMyPicture()
     {
         StartCoroutine(CaptureScreenshotAndSave());
