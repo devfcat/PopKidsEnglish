@@ -486,10 +486,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4d15480d39bf04a42904c3702d8f518f, type: 3}
   sfxList:
   - {fileID: 8300000, guid: 9114da6a3c7c7db4dac3b1e27b908a53, type: 3}
+  - {fileID: 8300000, guid: ab8c5f998d5dd4a4d968e4f87dbb35ed, type: 3}
   - {fileID: 8300000, guid: 9114da6a3c7c7db4dac3b1e27b908a53, type: 3}
-  - {fileID: 8300000, guid: 9114da6a3c7c7db4dac3b1e27b908a53, type: 3}
-  - {fileID: 8300000, guid: 9114da6a3c7c7db4dac3b1e27b908a53, type: 3}
-  - {fileID: 8300000, guid: 9114da6a3c7c7db4dac3b1e27b908a53, type: 3}
+  - {fileID: 8300000, guid: 66e10469b853ab14b9a5759f8fb58d3c, type: 3}
+  - {fileID: 8300000, guid: 99fa4f8652181a44f97694d58a57fec8, type: 3}
   - {fileID: 8300000, guid: b88b5440d3741004ab725823f9c60635, type: 3}
   - {fileID: 8300000, guid: 6539dd5fb46d03f42874376c3ef09164, type: 3}
   Volume1: 1
