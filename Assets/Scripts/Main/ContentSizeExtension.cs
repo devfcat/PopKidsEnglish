@@ -17,6 +17,9 @@ public class ContentSizeExtension : MonoBehaviour
         Check_State();
 
         Vector2 m_size = this.transform.GetComponent<RectTransform>().sizeDelta;
-        this.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(m_size.x, min_size + 500f + 275f*(value_words-3));
+        float calculatedHeight = min_size + 500f + 275f * (value_words - 3);
+        float finalHeight = Mathf.Max(calculatedHeight, min_size);
+        
+        this.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(m_size.x, finalHeight);
     }
 }
