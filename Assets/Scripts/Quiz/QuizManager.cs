@@ -166,4 +166,15 @@ public class QuizManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("isAudioActive", isAudioActive);
     }
+
+    public void SetAnswerText(GameObject popup, QuizQuestion currentQuestion)
+    {
+        if (popup == null) return;
+        // 두 번째 자식이 TextMeshProUGUI라고 가정
+        var text = popup.transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        if (text != null)
+        {
+            text.text = $"정답 : {currentQuestion.correctWord}";
+        }
+    }
 }

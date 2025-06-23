@@ -30,16 +30,6 @@ public class QuizMaker : MonoBehaviour
     [Header("퀴즈 완료 팝업")]
     [SerializeField] private GameObject popup_done;
     
-    // 퀴즈 문제 데이터 구조
-    [System.Serializable]
-    public class QuizQuestion
-    {
-        public string question;
-        public List<string> answers;
-        public int correctAnswerIndex;
-        public string correctWord;
-    }
-    
     // QuizMaker 인스턴스화 싱글톤 패턴
     private static QuizMaker _instance;
     public static QuizMaker Instance
@@ -288,7 +278,7 @@ public class QuizMaker : MonoBehaviour
             Debug.LogError("questionText가 null입니다.");
             return;
         }
-        
+
         // 문제 텍스트 설정
         questionText.text = $"{currentQuestion.question}";
         
@@ -341,11 +331,13 @@ public class QuizMaker : MonoBehaviour
             correctAnswers++;
             popup_correct.SetActive(true);
             SoundManager.Instance.PlaySFX(SFX.correct);
+            QuizManager.Instance.SetAnswerText(popup_correct, currentQuestion);
         }
         else
         {
             popup_wrong.SetActive(true);
             SoundManager.Instance.PlaySFX(SFX.uncorrect);
+            QuizManager.Instance.SetAnswerText(popup_wrong, currentQuestion);
         }
         
         // 다음 문제로 이동
