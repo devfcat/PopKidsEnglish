@@ -831,6 +831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a6c59af908b064eb2c8932e5385d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_quiz_word: 
   questionText: {fileID: 1730913838}
   answerTexts:
   - {fileID: 1111427420}
@@ -1413,7 +1414,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 120, y: 100}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &327623163
 MonoBehaviour:
@@ -1874,6 +1875,7 @@ GameObject:
   - component: {fileID: 600365301}
   - component: {fileID: 600365300}
   - component: {fileID: 600365302}
+  - component: {fileID: 600365303}
   m_Layer: 5
   m_Name: Quiz_Main
   m_TagString: Untagged
@@ -1914,14 +1916,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6286a74ab5237904682ea01992039333, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1951,6 +1953,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45807e0c313cd6498180aa4e1273e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &600365303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600365298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &618497712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,6 +2112,7 @@ GameObject:
   - component: {fileID: 713454444}
   - component: {fileID: 713454446}
   - component: {fileID: 713454445}
+  - component: {fileID: 713454447}
   m_Layer: 5
   m_Name: "\uD31D\uC5C5"
   m_TagString: Untagged
@@ -2118,6 +2134,7 @@ RectTransform:
   m_Children:
   - {fileID: 618497713}
   - {fileID: 1549584561}
+  - {fileID: 713909181}
   m_Father: {fileID: 1674094616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2163,6 +2180,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713454443}
   m_CullTransparentMesh: 1
+--- !u!95 &713454447
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713454443}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23d68ee3f03b3b145b2d68f7f0ae7ebc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &713909180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,13 +2231,13 @@ RectTransform:
   m_LocalScale: {x: 1.0000304, y: 1.0000304, z: 1.0000304}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1674094616}
+  m_Father: {fileID: 713454444}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 744.8137, y: 299.64697}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -500}
+  m_SizeDelta: {x: 1080, y: 299.64697}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713909182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2671,7 +2709,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_comment_tmp: {fileID: 479345535}
   apiUrl: https://api.openai.com/v1/audio/speech
-  apiKey: 
   lastComment: 
 --- !u!1 &873716716
 GameObject:
@@ -2704,7 +2741,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1492294772}
-  - {fileID: 1814421828}
   m_Father: {fileID: 1770142265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3012,7 +3048,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   apiUrl: https://api.openai.com/v1/audio/speech
-  apiKey: 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
   this_word: 
 --- !u!82 &1083838138
 AudioSource:
@@ -4995,6 +5030,7 @@ GameObject:
   - component: {fileID: 1492294772}
   - component: {fileID: 1492294774}
   - component: {fileID: 1492294773}
+  - component: {fileID: 1492294775}
   m_Layer: 5
   m_Name: "\uD31D\uC5C5"
   m_TagString: Untagged
@@ -5016,6 +5052,7 @@ RectTransform:
   m_Children:
   - {fileID: 1154758264}
   - {fileID: 1764742705}
+  - {fileID: 1814421828}
   m_Father: {fileID: 873716717}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5061,6 +5098,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492294771}
   m_CullTransparentMesh: 1
+--- !u!95 &1492294775
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492294771}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23d68ee3f03b3b145b2d68f7f0ae7ebc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1523937713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,6 +5131,7 @@ GameObject:
   - component: {fileID: 1523937717}
   - component: {fileID: 1523937716}
   - component: {fileID: 1523937718}
+  - component: {fileID: 1523937719}
   m_Layer: 5
   m_Name: Quiz_Intro
   m_TagString: Untagged
@@ -5114,14 +5173,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6286a74ab5237904682ea01992039333, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5151,6 +5210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a680511ed1cf28544ac1864856f6fd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1523937719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523937713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1549584560
 GameObject:
   m_ObjectHideFlags: 0
@@ -5673,7 +5745,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 713454444}
-  - {fileID: 713909181}
   m_Father: {fileID: 1770142265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6649,7 +6720,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -6785,13 +6856,13 @@ RectTransform:
   m_LocalScale: {x: 1.0000304, y: 1.0000304, z: 1.0000304}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 873716717}
+  m_Father: {fileID: 1492294772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 744.8137, y: 299.64697}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -500}
+  m_SizeDelta: {x: 1080, y: 299.64697}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814421829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7057,6 +7128,7 @@ GameObject:
   - component: {fileID: 1924818842}
   - component: {fileID: 1924818841}
   - component: {fileID: 1924818843}
+  - component: {fileID: 1924818844}
   m_Layer: 5
   m_Name: Quiz_Result
   m_TagString: Untagged
@@ -7099,14 +7171,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6286a74ab5237904682ea01992039333, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7139,6 +7211,19 @@ MonoBehaviour:
   score_UI: {fileID: 592364878}
   type_UI_1: {fileID: 253963757}
   type_UI_2: {fileID: 183886039}
+--- !u!114 &1924818844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924818839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1941852515
 GameObject:
   m_ObjectHideFlags: 0
