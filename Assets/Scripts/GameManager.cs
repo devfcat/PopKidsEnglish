@@ -143,65 +143,22 @@ public class GameManager : MonoBehaviour
     // 자연스러운 화면 전환을 위해 딜레이를 줌
     IEnumerator Change_State(eState state)
     {
-        prev_state = m_state;
+        prev_state = m_state; // 이전 상태를 저장함
 
-        m_state = state;
+        m_state = state; // 현재 상태를 저장함
 
-        string m_scene = SceneManager.GetActiveScene().name;
+        string m_scene = SceneManager.GetActiveScene().name; // 현재 씬 이름을 저장함
 
         yield return new WaitForSeconds(0.2f);
 
         if (state == eState.Splash)
         {
-
+            // 아무것도 안함
         }
         else
         {
             LoadStateScene(m_scene, state);
         }
-        /*
-        switch(state)
-        {
-            case eState.Splash:
-                break;
-            case eState.Main_Menu:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Main_WordBook:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Main_QuizMenu:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.MyDrawing_Menu:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Word_Main:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Word_JustAnswer:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Word_Draw:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Word_DrawResult:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Draw:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Draw_Result:
-                LoadStateScene(m_scene, state);
-                break;
-            case eState.Draw_Intro:
-                LoadStateScene(m_scene, state);
-                break;
-            default:
-                LoadStateScene(m_scene, eState.Main_Menu);
-                break;
-        }
-        */
     }
 
 
@@ -260,7 +217,7 @@ public class GameManager : MonoBehaviour
             {
                 QuizManager.Instance.On_Panel();
             }
-
+            else if (n_sceneName == "AR") return;
         }
     }
 
