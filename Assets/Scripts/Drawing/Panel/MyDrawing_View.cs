@@ -65,11 +65,13 @@ public class MyDrawing_View : MonoBehaviour
     {
         if (isFront)
         {
+            Play_EnglishTTS.Instance.OnClick_Listen();
             Cards[0].SetActive(true);
             Cards[1].SetActive(false);
         }
         else
         {
+            Play_KoreanTTS.Instance.Play_Info(WordManager.Instance.m_korean);
             Cards[0].SetActive(false);
             Cards[1].SetActive(true);
         }
@@ -154,5 +156,11 @@ public class MyDrawing_View : MonoBehaviour
     public void OnClick_ReDraw()
     {
         GameManager.Instance.SetState(eState.Word_Main);
+    }
+
+    // AR로 보기
+    public void View_AR()
+    {
+        GameManager.Instance.SetState(eState.AR);
     }
 }
