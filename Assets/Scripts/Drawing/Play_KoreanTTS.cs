@@ -23,7 +23,7 @@ public class Play_KoreanTTS : MonoBehaviour
     public string apiUrl;
 
     [Header("API_Key")]
-    [SerializeField] private string apiKey; // ChatGPT API Key
+    private string apiKey; // ChatGPT API Key
 
     public string lastComment = "";
 
@@ -61,16 +61,20 @@ public class Play_KoreanTTS : MonoBehaviour
     public async void Play_Info(string m_text)
     {
         if (m_text == "") return;
+        if (lastComment == m_text)
+        {
+            StartCoroutine(Load_MP3());
+            return;
+        }
         
         string comment = m_text;
         string filePath = Path.Combine(Application.persistentDataPath, "Say/korean_tts.mp3");
 
-        if (lastComment != comment || !File.Exists(filePath))
+        if (lastComment != comment)
         {
             Create_Word(comment);
             lastComment = comment;
         }
-        else StartCoroutine(Load_MP3());
     }
 
     public IEnumerator Load_MP3()
@@ -143,19 +147,13 @@ public class Play_KoreanTTS : MonoBehaviour
                 string filePath = Path.Combine(Application.persistentDataPath, "Say/korean_tts.mp3");
                 File.WriteAllBytes(filePath, audioData);
 
-                if (!File.Exists(filePath))
-                {
-                    GameManager.Instance.ErrorCode = 200;
-                }
-                else
-                {
-                    StartCoroutine(Load_MP3());
-                }
+                StartCoroutine(Load_MP3());
 
                 Debug.Log(filePath);
             }
             else
             {
+                Debug.LogError("음성 파일 생성 실패: " + response.StatusCode);  
                 GameManager.Instance.ErrorCode = 200;
             }
         }

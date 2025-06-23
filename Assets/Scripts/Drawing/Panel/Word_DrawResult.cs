@@ -26,7 +26,7 @@ public class Word_DrawResult : MonoBehaviour
     // AR로 보기
     public void View_AR()
     {
-
+        GameManager.Instance.SetState(eState.AR);
     }
 
     // 단어장에서 이 단어가 마지막이 아니어야 다음으로 버튼이 나옴

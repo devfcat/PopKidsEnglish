@@ -29,7 +29,6 @@ public class Quiz_Result : MonoBehaviour
     public void OnClick_Share()
     {
         SoundManager.Instance.PlaySFX(SFX.pretty);
-        // 네이티브 갤러리를 활용해 스크린샷을 외부로 공유하며 퀴즈 결과를 텍스트로 설명에 첨부함
         StartCoroutine(CaptureAndShare());
     }
     
@@ -38,20 +37,26 @@ public class Quiz_Result : MonoBehaviour
     /// </summary>
     private IEnumerator CaptureAndShare()
     {
-        // 다음 프레임까지 대기
         yield return new WaitForEndOfFrame();
         
         // 스크린샷 찍기
         Texture2D screenshot = CaptureScreenshot();
         
+        // 임시 파일로 저장
+        string filePath = Path.Combine(Application.temporaryCachePath, "quiz_result.png");
+        File.WriteAllBytes(filePath, screenshot.EncodeToPNG());
+        Destroy(screenshot);
+        
         // 공유할 텍스트 생성
         string shareText = CreateShareText();
         
-        // 네이티브 공유 기능 사용
-        ShareScreenshot(screenshot, shareText);
-        
-        // 메모리 정리
-        Destroy(screenshot);
+        // NativeShare 사용
+        new NativeShare()
+            .AddFile(filePath)
+            .SetSubject("PopKids English 퀴즈 결과")
+            .SetText(shareText)
+            .SetTitle("퀴즈 결과 공유")
+            .Share();
     }
     
     /// <summary>
@@ -101,84 +106,4 @@ public class Quiz_Result : MonoBehaviour
         
         return shareText;
     }
-    
-    /// <summary>
-    /// 스크린샷을 외부로 공유
-    /// </summary>
-    private void ShareScreenshot(Texture2D screenshot, string shareText)
-    {
-        // 스크린샷을 바이트 배열로 변환
-        byte[] screenshotBytes = screenshot.EncodeToPNG();
-        
-        // 임시 파일 경로 생성
-        string filePath = Path.Combine(Application.temporaryCachePath, "quiz_result.png");
-        
-        // 파일로 저장
-        File.WriteAllBytes(filePath, screenshotBytes);
-        
-        // 네이티브 공유 기능 호출
-        #if UNITY_ANDROID
-            ShareAndroid(filePath, shareText);
-        #elif UNITY_IOS
-            ShareIOS(filePath, shareText);
-        #endif
-    }
-    
-    #if UNITY_ANDROID
-    /// <summary>
-    /// Android에서 공유 기능 실행
-    /// </summary>
-    private void ShareAndroid(string filePath, string shareText)
-    {
-        using (AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent"))
-        using (AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent"))
-        {
-            intent.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
-            intent.Call<AndroidJavaObject>("setType", "image/png");
-            
-            // 파일 URI 생성
-            using (AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri"))
-            using (AndroidJavaClass fileProviderClass = new AndroidJavaClass("androidx.core.content.FileProvider"))
-            using (AndroidJavaObject file = new AndroidJavaObject("java.io.File", filePath))
-            {
-                AndroidJavaObject uri = fileProviderClass.CallStatic<AndroidJavaObject>("getUriForFile", 
-                    GetCurrentActivity(), 
-                    Application.identifier + ".fileprovider", 
-                    file);
-                
-                intent.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"), uri);
-                intent.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), shareText);
-                intent.Call<AndroidJavaObject>("addFlags", intentClass.GetStatic<int>("FLAG_GRANT_READ_URI_PERMISSION"));
-                
-                // 공유 다이얼로그 표시
-                AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intent, "퀴즈 결과 공유하기");
-                GetCurrentActivity().Call("startActivity", chooser);
-            }
-        }
-    }
-    
-    /// <summary>
-    /// 현재 Activity 가져오기
-    /// </summary>
-    private AndroidJavaObject GetCurrentActivity()
-    {
-        using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-        {
-            return unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-        }
-    }
-    #endif
-    
-    #if UNITY_IOS
-    /// <summary>
-    /// iOS에서 공유 기능 실행
-    /// </summary>
-    private void ShareIOS(string filePath, string shareText)
-    {
-        // iOS에서는 NativeGallery 플러그인을 사용하거나
-        // 직접 네이티브 코드를 호출해야 합니다.
-        // 여기서는 간단한 예시만 제공합니다.
-        Debug.Log("iOS 공유 기능: " + filePath + "\n" + shareText);
-    }
-    #endif
 }

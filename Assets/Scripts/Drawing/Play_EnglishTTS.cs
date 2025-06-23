@@ -17,7 +17,7 @@ public class Play_EnglishTTS : MonoBehaviour
     public string apiUrl;
 
     [Header("API_Key")]
-    [SerializeField] private string apiKey; // ChatGPT API Key
+    private string apiKey; // ChatGPT API Key
 
     public string this_word; // 현재 음성파일의 단어
 
